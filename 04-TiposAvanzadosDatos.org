@@ -627,6 +627,7 @@ La librería =string.h= incluye numerosas funciones dedicadas a cadenas de carac
 - Copiar cadenas :: =strcpy=
 - Concatenar cadenas :: =strcat=
 - Comparación de cadenas :: =strcmp=
+- Escribir en una cadena :: =sprintf=
 
 ** Longitud de una cadena :: =strlen=
 - =strlen= devuelve un entero con el número de caracteres.
@@ -740,6 +741,30 @@ return 0;
 | strcmp(s1 | s2) = 32 |
 | strcmp(s1 | s3) = -1 |
 
+
+** Escribir en una cadena :: =sprintf=
+- Igual que =printf= pero escribimos en una cadena destino
+
+#+BEGIN_SRC C
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+  char nombre[] = "Pepe";
+  char apellido[] = "Sanchez";
+  int edad = 35;	
+  char todo[100]={'\0'};	
+
+  sprintf(todo, "%s %s tiene %d años", nombre, apellido, edad); 	
+	
+  printf("%s", todo);
+
+  return 0;
+}
+#+END_SRC
+
+#+RESULTS:
+Pepe Sanchez tiene 35 años.
 
 
 * Estructuras
