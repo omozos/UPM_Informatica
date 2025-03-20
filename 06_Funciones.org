@@ -336,6 +336,101 @@ int main()
 }
 #+END_SRC
 
+* Funciones y Vectores
+** Vectores como argumentos de una función
+Los vectores se pasan a las funciones siempre por referencia. 
+En la definicion y declaraqcion de la funcion se usa el nombre de la variable y los corchetes vacios []. 
+Dentro de la funcion se usa de forma habitual.
+
+** Ejemplo (1)  vector de enteros
+
+#include "stdio.h" 
+
+void mostrar( int n[], int s ) {
+	int i;
+	for (i=0; i<s; i++) {   
+		printf("%d ", n[i]); 
+	}
+}
+
+int main (void) {
+	int combinacion[3]={1,56,78}; 
+
+    mostrar( combinacion, 3 ); 
+	return 0;
+}
+
+#+END_SRC
+
+** Ejemplo (2)  cadena de texto
+
+#+BEGIN_SRC C
+#include "stdio.h" 
+
+void mostrar( char n[] ) {
+	printf("%s\n", n); 
+}
+
+int main (void) {
+	char nombre[50]={"John"}; 
+
+    mostrar( nombre ); 
+	return 0;
+}
+
+#+END_SRC
+
+** Ejemplo (3) acceso a elementos de cadena de texto
+
+#+BEGIN_SRC C
+#include "stdio.h" 
+
+void mostrar( char n[] ) {
+	n[0] = 'Z';
+	printf("%s\n", n); 
+
+}
+
+int main (void) {
+	char nombre[50]={"John"}; 
+
+    mostrar( nombre ); 
+	return 0;
+}
+
+#+END_SRC
+
+** Ejemplo (4) vector de estructuras
+
+#+BEGIN_SRC C
+#include "stdio.h" 
+
+// N sera sustituido por 2
+#define N 2   
+
+// estructura
+typedef struct {
+	char nombre [50];
+	float creditos;
+}Asignatura;
+
+Asignatura curso[N]={{"matematicas",7}, {"ingles",7.5}};
+
+// función 
+void mostrar( Asignatura lista[] ) {
+	int i;
+	for (i=0; i<N; i++) {   
+		printf("\nAsignatura: %s\nCreditos: %.2f \n", lista[i].nombre, lista[i].creditos); 
+	}
+}
+
+// función principal
+int main (void) {
+	mostrar( curso ); 
+	return 0;
+}
+#+END_SRC
+
 
 # Local Variables:
 # ispell-local-dictionary: "spanish"
